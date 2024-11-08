@@ -1,0 +1,255 @@
+/* GLOBAL RESETS */
+*{
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+}
+
+/* VARIEBLES */
+:root{
+	/* GENARAL */
+	--CONTAINER-BG-C: rgba(0,0,0,0.5);
+	--BOX-SHADOW: 10px 10px 5px 0px rgba(0, 0, 0,54);
+	--GAME-FIGURE-BOX-SHADOW: 4px 8px 5px 0px rgba(0, 0, 0,54);
+	--TEXT-SHADOW: 3px 3px 3px black;
+
+	/* COLOR */
+	--DARK-COLOR-TR: hsla(0, 0%, 0%, 0.438);
+	--GAME-FIGURE-BG: rgb(2, 1, 75);
+	--GAME-PRICE-COLOR: rgb(0, 255, 255);
+
+	/* PROPERT SIZES */
+	--XXS-N: 0.5rem;
+	--XS-N: 1rem;
+	--SEMI-S-N: 1.25rem;
+	--S-N: 1.5rem;
+	--M-N: 2rem;
+	--L-N: 2.5rem;
+	--XL-N: 3rem;
+	--XXL-N: 3.5rem;
+
+	/* FONT-WEIGHTS */
+	--FW-T: 100;
+	--FW-EX-L: 200;
+	--FW-L: 300;
+	--FW-N: 400;
+	--FW-M: 500;
+	--FW-SB: 600;
+	--FW-B: 700;
+	--FW-EX-B: 800;
+	--FW-H-B: 900;
+}
+/* END OF VARIEBLES*/
+
+/* OFF SCREEN CLASSES */
+.cart.offscreen{
+	right: 0;
+}
+
+
+/* UTILITY CLASSES */
+
+	/* GRID */
+	.grid{
+		display: grid;
+		grid-template-columns: 1fr 2fr;
+	}
+
+	/* FLEX */
+	.flex{
+		display: flex;
+	}
+
+	/* FLEX-CENTER */
+	.flex-center{
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+	/* CENTER CONTENT */
+	.center{
+		text-align: center;
+	}
+	/* CONTAINER STATIC PROPERTIES*/
+	.wrapper{
+		max-width: 1440px;
+		margin: 0 auto;
+	}
+
+	.header-sub-container,
+	.body-cont{
+		width: 95%;
+	}
+	/* END OF CONTAINER PROPERTIES */
+
+
+	/* ELEMENT RESETS */
+	ul{
+		list-style-type: none;
+	}
+
+	button,a{
+		cursor: pointer;
+	}
+
+	a{
+		text-decoration: none;
+	}
+
+	img{
+		object-fit: -webkit-cover;
+		object-fit: -moz-cover;
+		object-fit: -ms-cover;
+		object-fit: cover;
+		width: 100%;
+	}
+
+	p{
+		font-size: var(--XS-N);
+	}
+	/* END OF ELEMENT RESETS */
+
+
+	/* TYPOGRAPHY */
+
+	/* HEADINGS */
+	h2{
+		font-size: var(--M-N);
+		font-weight: var(--FW-L);
+		color: rgb(126, 115, 163);
+	}
+
+	h3{
+		font-size: var(--S-N);
+		font-weight: var(--FW-EX-L);
+		color: rgba(182, 182, 182, 0.726);
+		margin-bottom: var(--XXS-N);
+	}
+
+	h4{
+		font-size: var(--SEMI-S-N);
+		color: rgb(182, 182, 182);
+	}
+	/* END OF TYPOGRAPHY */
+/* END OF UTILITY CLASSES */
+
+/* NAVIGATION */
+nav.active{
+	height: 100%;
+	overflow: visible;
+}
+
+nav a{
+	display: block;
+	font-size: var(--S-N);
+	color: rgb(126, 115, 163);	
+}
+
+nav a::after{
+	height: 4px;
+	width: 0;
+	content:"";
+	display: block;
+	background-color: rgb(4, 7, 177);
+	transition:all .5s;
+}
+
+.active::after{
+	height: 4px;
+	width: 100%;
+	content:"";
+	display: block;
+	background-color: rgba(20, 22, 145, 0.74);
+}
+
+ nav a:hover::after{
+	width: 100%;
+} 
+/* END OF NAVIGATION */
+
+
+/* GENERAL STYLES */
+
+	/* HERO HEADINGS */
+	.hero-heading{
+		font-family: colonna;
+		font-size: var(--L-N);
+		font-weight: var(--FW-SB);
+		color: white;
+		text-shadow: var(--TEXT-SHADOW);
+		margin-top: var(--XL-N);
+		
+	}
+
+	.hero-sub-heading{
+		font-size: var(--S-N);
+		color: aqua;
+	}
+
+	.specials__h2,
+	.games__h2,
+	.cart__h2{
+		margin: var(--XS-N) 0;
+	}
+
+
+	/* GAMES STYLES */
+	.game__figure,
+	.cart__items{
+		background-color: var(--GAME-FIGURE-BG);
+	}
+
+	.game__img{
+		height: 180px;
+	}
+	.game__img:first-child,
+	.cart__img:first-child{
+		object-position: 0 0;
+	}
+	.game__info,
+	.cart__info{       
+		justify-content: space-between;
+		padding: var(--XXS-N);
+	}
+
+	.game__headings{
+		margin-right: 5px;
+	}
+
+	.game__title,
+	.cart__title{
+		color: white;
+		margin-bottom: 5px;
+	}
+
+	.game__descr{
+		color: rgb(199, 199, 199);
+	}
+
+	.game__price,
+	.cart__total-price,
+	.cart__total-items{
+		color: var(--GAME-PRICE-COLOR);
+		margin-bottom: 5px;
+	}
+	.game__btn,
+	.cart__btn
+	{
+		color: var(--GAME-PRICE-COLOR);
+		padding: 3px var(--XXS-N); 
+		background-color: transparent;
+		border: 1px solid  rgb(199, 199, 199);
+	}
+
+	/* Cart */
+	.cart__items{
+		border-bottom: 2px solid white;
+		margin-bottom: var(--XS-N);
+	}
+
+	.cart__quantity{
+		width: 56px;
+		margin-bottom: 5px;
+	}
+
+	
