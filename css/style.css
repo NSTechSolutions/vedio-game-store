@@ -36,6 +36,7 @@ nav ul {
 .body-container {
 }
 
+/* Hero Section */
 .hero-container {
   height: 70vh;
   flex-flow: column;
@@ -100,15 +101,23 @@ nav ul {
   position: absolute;
   top: 0;
   right: 0; /* right: -100%; */
-  width: 350px;
-  padding: 0 var(--S-N);
-  background-color: rgb(14, 1, 31);
-  /* transition: all 3s; */
 }
 
-.cart__cont {
-  max-height: 70vh;
+.cart-cont {
+  position: sticky;
+  top: 0;
+  right: 0;
+  width: 350px;
+  padding: 5px var(--S-N);
+  background-color: rgb(14, 1, 31);
+}
+
+.cart-details {
+  max-height: 60vh;
   overflow: auto;
+}
+
+.cart__details {
   margin-bottom: var(--XS-N);
 }
 

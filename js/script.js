@@ -4,27 +4,16 @@
 // });
 
 // HTML Elements
-const buyBtns = document.querySelectorAll(".game__btn");
+const addBtns = document.querySelectorAll(".game__btn");
 const cartBtn = document.querySelector(".cartBtn");
-const cartContEl = document.querySelector(".cart-cont");
-// Shopping Cart
-ready();
+const cartDetails = document.querySelector(".cart-details");
+const totalCartItemsEl = document.querySelector(".total-cart-items");
 
-function ready() {
-  const cartItems = document.querySelectorAll(".cart__items");
-  cartItems.forEach((cartItem) => {
-    const cartBtn = cartItem.querySelector(".cart__btn");
-    cartBtn.addEventListener("click", cartRemove);
-  });
-}
+// Values
+let cartItems = 0;
 
-// Cart Delete Buttton
-function cartRemove(event) {
-  let cartBtnClicked = event.target;
-  cartBtnClicked.parentElement.parentElement.parentElement.remove();
-}
-
-buyBtns.forEach((buyBtn) => {
+// Adds Content to the cart
+addBtns.forEach((buyBtn) => {
   buyBtn.addEventListener("click", (e) => {
     const game = e.target.parentElement.parentElement.parentElement;
     const gameImg = game.children[0].src;
@@ -35,10 +24,11 @@ buyBtns.forEach((buyBtn) => {
   });
 });
 
+// Content Being add to cart
 function addToCart(gameImg, gameTitle, gamePrice) {
-  //   console.log(Testing);
-  const cartCont = `
-            <div class="cart__cont">
+  const cartCont = document.createElement("div");
+  cartCont.classList.add("cards");
+  const cartItems = `
                 <figure class="cart__items">
                   <img
                     src="${gameImg}"
@@ -62,7 +52,31 @@ function addToCart(gameImg, gameTitle, gamePrice) {
                     </div>
                   </div>
                 </figure>
-              </div>
     `;
-  cartContEl.innerHTML = cartCont;
+  cartCont.innerHTML = cartItems;
+  cartDetails.appendChild(cartCont);
+
+  //  Will Check the number of cart items as we Add
+  totalCartItems();
+
+  // Delete Function
+  deleteCartItem();
+}
+
+function deleteCartItem() {
+  const cartItems = document.querySelectorAll(".cart__items");
+  cartItems.forEach((cartItem) => {
+    const cartBtn = cartItem.querySelector(".cart__btn");
+    cartBtn.addEventListener("click", (event) => {
+      let cartDeletebtnClicked = event.target; // Delete Button
+      cartDeletebtnClicked.parentElement.parentElement.parentElement.parentElement.remove(); // Will delete card
+
+      //  Will Check the number of cart items as we Delete
+      totalCartItems();
+    });
+  });
+}
+
+function totalCartItems() {
+  totalCartItemsEl.innerText = `${cartDetails.children.length}`;
 }
